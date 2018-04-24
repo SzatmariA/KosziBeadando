@@ -4,18 +4,19 @@ function [Q,R] =GQR(A) %
   R = A;
   
 
-  for q =2:n
-    for p = 1:(q-1)
-      %G = eye(n);
+  for p = 1:(n-1)
+    for q =p+1:n
+        
+      GG = eye(n); %GG lol
       d = sqrt((A(q,p)^2) + (A(p,p)^2));
       cost = A(p,p)/d;
       sint= A(q,p)/d;
-      %[c,s] = givensrotation( R(i-1,j),R(i,j) );
-       %G([i-1, i],[i-1, i]) = [c -s; s c];
-      G=GM(p,q,sint,cost)
-      R = G*R;
+      G=GM(p,q,sint,cost);
+      %GG(p:q,p:q) = G
+      A = G*A;
+      A
       Q = Q*G;
     end
   end
-
+R=A;
 end
