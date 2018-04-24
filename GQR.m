@@ -11,8 +11,9 @@ function [Q,R] =GQR(A)
       G=GM(p,q,sint,cost);
       GG(p:q,p:q) = G(p:q,p:q);
       A = GG*A;
-      Q = Q*GG;
+      Q = GG*Q;
     end
   end
+Q = Q';
 R=A;
 end
