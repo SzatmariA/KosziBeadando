@@ -1,15 +1,19 @@
-function [Q,R] = GQR(A)
-  [m,n] = size(A);
-  Q = eye(m);
+function [Q,R] =GQR(A) % 
+  n = size(A);
+  Q = eye(n);
   R = A;
+  
 
-  for j =n:1
-    for k = n:2
-      G = eye(m);
+  for q =2:n
+    for p = 1:(q-1)
+      %G = eye(n);
+      d = sqrt((A(q,p)^2) + (A(p,p)^2));
+      cost = A(p,p)/d;
+      sint= A(q,p)/d;
       %[c,s] = givensrotation( R(i-1,j),R(i,j) );
        %G([i-1, i],[i-1, i]) = [c -s; s c];
-      G=GM(j-1,k,1,2);
-      R = G'*R;
+      G=GM(p,q,sint,cost)
+      R = G*R;
       Q = Q*G;
     end
   end
