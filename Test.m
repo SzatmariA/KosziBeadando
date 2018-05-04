@@ -20,6 +20,8 @@ function Test()
     plot(x,tHQR, 'Color', [0, 1,0]);
     title('Givens QR Decompositin vs Built in Orthogonal-triangular decomposition');
     xlabel('Size of matrix (n*n)');
-    ylabel('Running time in sec');
-    legend('GQR','Built in QR decomp')
+    ylabel('Running time in sec'); 
+    legend('GQR','Built in QR decomp');
+    
+    %plot(x,tGQR, 'Color', [1, 1,0]); ennek új plotnak kéne lennie
 end
